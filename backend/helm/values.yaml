@@ -4,10 +4,8 @@
 global:
   imagePullPolicy: IfNotPresent
   # 你可以在这里放一些所有子chart都需要的值
-
 # 这个 replicaCount 只对根Chart有效，不会自动传递给子Chart
 replicaCount: 1
-
 # go子chart配置 - 与Chart.yaml中定义的子chart名称一致
 backend:
   # 将子 Chart 的所有值嵌套在与子 Chart 名字相同的键下
@@ -15,8 +13,8 @@ backend:
   replicaCount: 1 # 这个值会覆盖子 Chart自身的默认值
   image:
     repository: "ccr.ccs.tencentyun.com/sumery/server"
-    tag: "pre"
-#    pullPolicy: IfNotPresent
+    tag: "262e65a4d0c4a904db2f0f6ab9f0f2752320be31"
+    #    pullPolicy: IfNotPresent
     pullPolicy: Always
   service:
     type: ClusterIP
@@ -28,7 +26,6 @@ backend:
     OTLP_HTTP_ENDPOINT: "center-collector.observability:4318"
   autoscaling:
     enabled: false # 添加autoscaling配置，确保可以通过父values控制
-
 # react子chart配置 - 与Chart.yaml中定义的子chart名称一致
 frontend:
   enabled: false
